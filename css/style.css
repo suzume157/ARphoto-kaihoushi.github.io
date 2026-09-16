@@ -1,0 +1,95 @@
+#ar-controls {
+    position: fixed;
+
+    right: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    z-index: 99999 !important;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+/* スケール表示 */
+#scale-value {
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    text-shadow:
+        1px 1px 3px black,
+        -1px -1px 3px black;
+}
+
+
+/* 縦型スライダー */
+#scale-slider {
+    writing-mode: vertical-lr;
+
+    direction: rtl;
+
+    width: 30px;
+    height: 200px;
+
+    touch-action: manipulation;
+}
+
+/*スクリーンショット用のボタン*/
+#screenshot-button {
+    position: fixed;
+
+    width: 50px;
+    height: 50px;
+
+    bottom: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999 !important;
+
+    border: 2px solid black;
+    border-radius: 50%;
+
+    background: white;
+}
+
+/*モデル切り替え用ボタン*/
+#model-switch-button{
+    position: fixed;
+
+    width: 100px;
+    height: 30px;
+
+    bottom: 20px;
+    left: 25%;
+
+    transform: translateX(-50%);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999 !important;
+
+    border: 2px solid black;
+    border-radius: 5px;
+
+    background: white;
+}
