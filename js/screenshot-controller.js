@@ -11,37 +11,28 @@ const ScreenshotController = {
 
     capture() {
         const uiElements = document.querySelectorAll(".screenshot-ignore");
-
         // UIを非表示
         for (const element of uiElements) {
             element.style.display = "none";
         }
-
         const video = document.querySelector("video");
         const arCanvas = this.scene.canvas;
-
         if (!video || !arCanvas) {
             this.showUI(uiElements);
             return;
         }
-
         // A-Frameを再描画
-        this.scene.renderer.render(
-            this.scene.object3D,
-            this.scene.camera
-        );
-
+        this.scene.renderer.render(this.scene.object3D,this.scene.camera);
+        
         // スマホ画面と同じサイズのCanvas
         const canvas = document.createElement("canvas");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         const ctx = canvas.getContext("2d");
 
         // カメラ映像の比率
         const videoAspect = video.videoWidth / video.videoHeight;
         const screenAspect = canvas.width / canvas.height;
-
         let videoWidth;
         let videoHeight;
         let videoX;
@@ -60,42 +51,17 @@ const ScreenshotController = {
             videoY = (canvas.height - videoHeight) / 2;
         }
 
-        // ① カメラ映像
-        ctx.drawImage(
-            video,
-            videoX,
-            videoY,
-            videoWidth,
-            videoHeight
-        );
-
-        // ② AR Canvas
+        // カメラ映像
+        ctx.drawImage(video,videoX,videoY,videoWidth,videoHeight);
+        // AR Canvas
         const arRect = arCanvas.getBoundingClientRect();
-
-        ctx.drawImage(
-            arCanvas,
-            0,
-            0,
-            arCanvas.width,
-            arCanvas.height,
-            arRect.left,
-            arRect.top,
-            arRect.width,
-            arRect.height
-        );
-
+        ctx.drawImage(arCanvas,0,0,arCanvas.width,arCanvas.height,arRect.left,arRect.top,arRect.width,arRect.height);
         // UIを再表示
         this.showUI(uiElements);
-
         // 画像を生成
         canvas.toBlob((blob) => {
-
-            if (!blob) {
-                return;
-            }
-
+            if (!blob) {return;}
             this.saveImage(blob);
-
         }, "image/png");
     },
 
