@@ -2,11 +2,9 @@ const ModelSwitcher = {
     currentModel: 0,
 
     models: [
-        "./models/mao3.glb",
-        "./models/mao1.glb",
-        "./models/denxchan.glb",
+        "./models/mao.glb",
+        "./models/denxchan_2D.glb",
         "./models/dinkstrong.glb",
-        "./models/sexmaster.glb"
     ],
 
     init(){
@@ -24,7 +22,6 @@ const ModelSwitcher = {
         if (this.currentModel >= this.models.length) {
             this.currentModel = 0;
         }
-
         this.model.setAttribute("gltf-model",this.models[this.currentModel]);
     }
 };

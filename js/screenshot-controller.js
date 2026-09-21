@@ -66,58 +66,36 @@ const ScreenshotController = {
     },
 
     saveImage(blob) {
-
         const fileName = `ar-screenshot-${Date.now()}.png`;
-
         // iPhone / iPad
         if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-
-            const file = new File(
-                [blob],
-                fileName,
-                { type: "image/png" }
-            );
-
+            const file = new File([blob],fileName,{ type: "image/png" });
             // Web Share API
             if (
                 navigator.share &&
                 navigator.canShare &&
                 navigator.canShare({ files: [file] })
             ) {
-
-                navigator.share({
-                    files: [file]
+                navigator.share(
+                    {files: [file]
                 }).catch(function(error) {
-
                     if (error.name !== "AbortError") {
                         console.error("共有に失敗しました:", error);
                     }
-
                 });
-
             } else {
-                console.error(
-                    "このiPhoneではWeb Share APIが利用できません"
-                );
+                console.error("このiPhoneではWeb Share APIが利用できません");
             }
-
             return;
         }
-
         // Android
         const url = URL.createObjectURL(blob);
-
         const link = document.createElement("a");
-
         link.href = url;
         link.download = fileName;
-
         document.body.appendChild(link);
-
         link.click();
-
         document.body.removeChild(link);
-
         setTimeout(function() {
             URL.revokeObjectURL(url);
         }, 1000);
