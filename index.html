@@ -18,7 +18,9 @@
         <a-assets>
             <a-asset-item id="ARmodel" src="./models/mao.glb"></a-asset-item>
         </a-assets>
-        <a-entity id="ar-model" gltf-model="#ARmodel" scale="1 1 1" rotation="-20 0 0" animation-mixer> </a-entity>
+        <a-marker id="ar-marker" preset="custom" type="pattern" url="./markers/pattern-DENX.patt">
+            <a-entity id="ar-model" gltf-model="#ARmodel" scale="1 1 1" rotation="-20 0 0" animation-mixer> </a-entity>
+        </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
     <button id="model-switch-button" class="screenshot-ignore">モデル切替</button>
