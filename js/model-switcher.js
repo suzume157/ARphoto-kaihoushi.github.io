@@ -2,9 +2,10 @@ const ModelSwitcher = {
     currentModel: 0,
 
     models: [
-        "./models/mao.glb",
+        "./models/denxchan_yukkuri.glb",
         "./models/denxchan_2D.glb",
-        "./models/dinkstrong.glb",
+        "./models/denxchan_nebesi.glb",
+        "./models/denxchan_SK.glb"
     ],
 
     init(){
